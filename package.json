@@ -32,7 +32,7 @@
     "start:all": "concurrently \"npm start\" \"npm run start:functions\"",
     "build": "react-scripts build",
     "build:functions": "npm --prefix functions run build",
-    "build:all": "npx run build:functions && npx run build",
+    "build:all": "npm run build:functions && npx run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
