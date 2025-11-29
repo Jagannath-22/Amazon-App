@@ -14,11 +14,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.10.0",
-<<<<<<< HEAD
     "dotenv": "^17.2.3",
-=======
-    "dotenv": "^17.2.0",
->>>>>>> 0927fb1 (1st commit)
     "firebase": "^10.14.1",
     "framer-motion": "^12.23.1",
     "fuse.js": "^7.1.0",
@@ -32,7 +28,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:functions": "npm --prefix functions start",
+    "start:all": "concurrently \"npm start\" \"npm run start:functions\"",
     "build": "react-scripts build",
+    "build:functions": "npm --prefix functions run build",
+    "build:all": "npm run build:functions && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "concurrently": "^7.6.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11"
   }
