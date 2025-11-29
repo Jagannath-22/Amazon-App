@@ -1,0 +1,276 @@
+/* ShoppingListPage.css */
+
+/* Layout */
+.shoppingListPage__container {
+  display: flex;
+  justify-content: center;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.shoppingListPage__main {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.shoppingListPage__sidebar {
+  flex: 0.25;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.shoppingListPage__content {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar__sectionTitle {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.sidebar__listNav {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar__listItem {
+  padding: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px;
+}
+
+.sidebar__listItem.active {
+  background-color: #e5f1ff;
+  font-weight: bold;
+}
+
+/* Header */
+.content__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.header__privateLabel {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.header__inviteButton,
+.header__actionButton {
+  padding: 6px 12px;
+  margin-left: 10px;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.header__actionButton--icon {
+  background-color: transparent;
+  border: none;
+}
+
+/* Divider */
+.content__divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 15px 0;
+}
+
+/* Search and Filter */
+.content__searchFilter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.searchFilter__searchBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 10px;
+  flex: 1;
+}
+
+.searchBox__input {
+  border: none;
+  outline: none;
+  padding: 6px;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.searchFilter__button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Item List */
+.content__itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+}
+
+.listItem__mainContent {
+  display: flex;
+  gap: 20px;
+}
+
+.listItem__imageContainer {
+  width: 130px;
+  min-width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.listItem__image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.listItem__details {
+  flex: 1;
+}
+
+.listItem__name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.listItem__brand,
+.listItem__reviewCount,
+.listItem__delivery,
+.listItem__addedDate,
+.listItem__attributes {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.listItem__rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 4px 0;
+}
+
+.star-filled {
+  color: #ffa41c;
+}
+
+.star-empty {
+  color: #ccc;
+}
+
+.listItem__dealText {
+  color: #b12704;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.listItem__priceInfo {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listItem__currentPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.listItem__mrp {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.listItem__actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.listItem__actionButton {
+  padding: 6px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.listItem__actionButton--icon {
+  background-color: transparent;
+  border: none;
+}
+
+.listItem__expandedContent {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #333;
+  padding-left: 150px;
+}
+
+.listItem__toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  cursor: pointer;
+}

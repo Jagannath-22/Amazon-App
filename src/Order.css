@@ -1,0 +1,68 @@
+.order {
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 16px 24px;
+  max-width: 1000px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Header: Order + Date + ID */
+.order__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 12px;
+}
+
+.order__header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f1111;
+  margin-bottom: 4px;
+}
+
+.order__timestamp,
+.order__id small {
+  font-size: 13px;
+  color: #565959;
+}
+
+/* Items inside order */
+.order__items {
+  padding: 10px 0;
+  border-bottom: 1px solid #e3e6e6;
+}
+
+/* Footer: Total */
+.order__footer {
+  margin-top: 12px;
+  text-align: right;
+}
+
+.order__total {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f1111;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .order {
+    padding: 16px;
+    margin: 12px;
+  }
+
+  .order__header h2 {
+    font-size: 16px;
+  }
+
+  .order__total {
+    font-size: 14px;
+  }
+}

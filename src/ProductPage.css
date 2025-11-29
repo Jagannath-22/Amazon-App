@@ -1,0 +1,1257 @@
+/* ProductPage.css - Main Product Page Layout */
+
+/* Overall Page Wrapper */
+.productPage__container {
+    display: flex;
+    flex-direction: column; /* Stack main product and reviews vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 20px 0; /* Top/bottom padding for the whole page */
+    background-color:white;
+    min-height: 100vh;
+    box-sizing: border-box;
+    
+}
+
+/* Main Product Grid (3 columns by default) */
+.productPage {
+    display: grid;
+    /* Grid template columns:
+       auto: for image thumbnails (adjusts to content)
+       1.8fr: for product info (takes 1.8 parts of available space)
+       0.9fr: for checkout box (takes 0.9 parts of available space) */
+    grid-template-columns: auto 1.8fr 0.9fr; /* This ratio creates the Amazon-like look */
+    gap: 46px; /* Space between columns */
+    width: 100%;
+    max-width: 1200px; /* Max width of the entire main product content area */
+    background-color: var(--amazon-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow around the main content box */
+    align-items: flex-start; /* Align grid items to the top */
+    box-sizing: border-box;
+}
+
+/* Common column styling (add any shared padding/margins here if desired) */
+.productPage__column {
+    /* Individual column styling can go here, if common */
+}
+
+/* --- Left Column: Product Image Gallery (ProductImageGallery Component) --- */
+.productPage__column--left {
+    display: flex;
+    gap: 12px; /* Space between vertical thumbnails and main image */
+    align-items: flex-start; /* Align contents to the top */
+    width: 100%; /* Takes full width of its parent grid column */
+    min-width: 100px; /* Ensure it doesn't shrink too much */
+}
+
+/* Thumbnail Slider Wrapper for arrows */
+.thumbnailSliderWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center buttons and thumbnails */
+    gap: 8px; /* Space between arrows and thumbnail list */
+}
+
+.thumbnailSliderWrapper .sliderButton {
+    background-color: var(--amazon-light-gray-bg);
+    border: 1px solid var(--amazon-border);
+    border-radius: 4px;
+    width: 30px; /* Size of arrow buttons */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amazon-text);
+    transition: background-color 0.1s ease;
+}
+.thumbnailSliderWrapper .sliderButton:hover {
+    background-color: #e0e0e0;
+}
+.thumbnailSliderWrapper .sliderButton svg {
+    font-size: 16px; /* Size of the Material-UI icon */
+    color: #565959; /* Icon color */
+}
+
+/* Vertical Thumbnail Gallery */
+.productPage__thumbnailGalleryLeft {
+    display: flex;
+    flex-direction: column; /* Stack thumbnails vertically */
+    gap: 6px; /* Tighter space between thumbnails */
+    max-height: 400px; /* Adjust max-height to match Amazon's visible area */
+    overflow-y: hidden; /* Hide default scrollbar, use custom buttons if many images */
+    padding-right: 5px; /* Space for potential invisible scrollbar / aesthetics */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+.productPage__thumbnailGalleryLeft::-webkit-scrollbar {
+    display: none; /* Webkit */
+}
+
+/* Individual Thumbnail Styling */
+.productPage__thumbnail {
+    width: 40px; /* Smaller, as seen in iPhone 15 image for vertical thumbnails */
+    height: 40px;
+    object-fit: contain;
+    border: 1px solid #c7c7c7; /* Lighter border */
+    border-radius: 3px;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    padding: 1px; /* Minimal padding */
+    background-color: var(--amazon-white);
+}
+
+.productPage__thumbnail:hover {
+    border-color: var(--amazon-link); /* Blue border on hover */
+    box-shadow: 0 0 0 2px var(--amazon-link);
+}
+
+.productPage__thumbnail.selected {
+    border-color: var(--amazon-link); /* Selected border remains blue */
+    box-shadow: 0 0 0 2px var(--amazon-link); /* Blue outline for selected */
+}
+
+/* Main Product Image Container */
+.productPage__mainImageContainer {
+    width: 380px; /* Fixed width for the main image to match replica */
+    height: 380px; /* Fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--amazon-white);
+    border: 1px solid var(--amazon-border); /* Subtle border around main image */
+    border-radius: 8px;
+    overflow: hidden; /* Crucial for preventing image zoom from spilling */
+    box-sizing: border-box;
+    position: relative; /* For zoom overlay if any */
+}
+
+.productPage__mainImage {
+    max-width: 100%; /* Ensure image fits within container */
+    max-height: 100%; /* Ensure image fits within container */
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Smooth zoom transition */
+    display: block;
+}
+
+.productPage__mainImageContainer:hover .productPage__mainImage {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+
+/* --- Middle Column: Product Information (ProductInfo, ProductOffers, ProductDetails Components) --- */
+.productPage__column--middle {
+    padding-right: 15px; /* Horizontal padding for spacing from right column */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Default gap between main sections in this column */
+}
+
+/* Brand Link (often above title) */
+.productPage__brandLink {
+    font-size: var(--font-size-sm);
+    color: var(--amazon-link);
+    margin-bottom: -10px; /* Pulls it closer to the title */
+}
+
+/* Product Title */
+.productPage__title { /* Root h1 in ProductInfo */
+    font-size: var(--font-size-3xl); /* Large, prominent title */
+    font-weight: 400; /* Regular weight, like Amazon */
+    line-height: 1.25;
+    color: var(--amazon-text);
+    margin-bottom: -10px; /* Reduces space to the review section */
+}
+
+/* Product Info - Review Block (Rating summary and distribution) */
+.productPage__reviewBlock { /* Root div in ProductInfo for review summary */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px; /* Space before horizontal divider */
+    padding-top: 20px;
+}
+
+.productPage__reviewBlock > div:first-child { /* Avg rating number, stars, and global ratings */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between rating number and stars */
+    font-size: var(--font-size-base); /* Smaller font for avg rating number */
+    font-weight: 500;
+    color: var(--amazon-link); /* Color of average rating number */
+    cursor: pointer;
+    text-decoration: none;
+}
+.productPage__reviewBlock > div:first-child:hover {
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+
+.productPage__reviewBlock > div:first-child .MuiSvgIcon-root { /* StarIcon from Material-UI */
+    font-size: 16px; /* Size of the star icons */
+    color: #FF9900; /* Amazon's star color */
+    vertical-align: middle;
+}
+
+.productPage__reviewBlock > div:first-child > span:last-child { /* Global ratings count */
+    font-size: var(--font-size-sm); /* Smaller font for global rating count */
+    color: var(--amazon-link); /* Link color for review count */
+    margin-left: 5px; /* Space from stars */
+    border-left: 1px solid #ccc; /* Separator line */
+    padding-left: 8px; /* Padding for separator */
+}
+.productPage__reviewBlock > div:first-child > span:last-child:hover {
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+
+/* Rating Distribution Bars */
+.productPage__reviewBlock > div:not(:first-child) { /* Individual bar row */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between star label, bar, and percentage */
+    font-size: var(--font-size-sm);
+    color: var(--amazon-link); /* Link color for star count */
+    cursor: pointer;
+    margin-top: 4px; /* Small vertical gap between bars */
+}
+.productPage__reviewBlock > div:not(:first-child):hover {
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+
+.productPage__reviewBlock > div:not(:first-child) span:first-child { /* "5 star" label */
+    width: 60px; /* Fixed width for star label */
+    flex-shrink: 0; /* Prevent shrinking */
+    text-align: right;
+}
+
+.productPage__reviewBlock > div:not(:first-child) > div:nth-child(2) { /* Grey background bar */
+    flex-grow: 1; /* Allow it to take available space */
+    height: 8px; /* Fixed height for the bar */
+    background-color: #E7E7E7; /* Lighter grey for empty bar */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.productPage__reviewBlock > div:not(:first-child) > div:nth-child(2) > div { /* Yellow fill bar */
+    height: 100%;
+    background-color: #FFB310; /* Amazon's orange-yellow for fill */
+    border-radius: 4px; /* Ensure rounded ends */
+}
+
+.productPage__reviewBlock > div:not(:first-child) span:last-child { /* Percentage text */
+    width: 35px; /* Fixed width for percentage */
+    flex-shrink: 0;
+    text-align: right;
+    color: var(--amazon-link);
+}
+
+/* Price Section */
+.productPage__priceSection { /* Root div in ProductInfo for price details */
+    padding-bottom: 6px; /* Space before horizontal divider */
+}
+.productPage__originalPrice {
+    font-size: var(--font-size-sm); /* M.R.P. size */
+    color: var(--amazon-light-text);
+    margin-bottom: 4px; /* Space to current price */
+}
+.productPage__originalPrice .line-through {
+    text-decoration: line-through;
+}
+
+.productPage__currentPrice {
+    font-size: var(--font-size-4xl); /* Large, prominent price */
+    font-weight: 500;
+    color: var(--amazon-price-red); /* Amazon's price color */
+    line-height: 2; /* Tighter line height */
+    margin-bottom: -7px;
+}
+.productPage__priceSection > div:nth-of-type(2) { /* Inclusive of all taxes */
+    font-size: var(--font-size-xs);
+    color: var(--amazon-light-text);
+    margin-bottom: 4px;
+}
+.productPage__priceSection > div:nth-of-type(3) { /* EMI info */
+    font-size: var(--font-size-sm);
+    color: var(--amazon-green);
+    font-weight: 500;
+}
+
+/* Offers Section (ProductOffers Component) */
+.productPage__offers { /* Root div in ProductOffers */
+    padding-bottom: 10px;
+}
+.productPage__offers h3 {
+    font-size: var(--font-size-md); /* "Offers" heading */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.productPage__offerGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 3 columns for offers */
+    gap: 3px; /* Space between offer items */
+}
+.productPage__offerItem {
+    border: 1px solid #D5D9D9; /* Light border */
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #F8F8F8; /* Slight background tint */
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+    min-height: 80px; /* Ensure consistent height for offer boxes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.productPage__offerItem .offer-title {
+    font-weight: 500;
+    color: var(--amazon-text);
+    margin-bottom: 5px;
+}
+.productPage__offerItem .offer-desc {
+    color: var(--amazon-light-text);
+}
+
+/* "What's in the Box" Section */
+.productPage__whatsInBox {
+    margin-top: 15px;
+}
+.productPage__whatsInBox h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.whatsInBox__items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items if few */
+    margin-bottom: 15px;
+}
+.whatsInBox__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px; /* Fixed width for each item */
+}
+.whatsInBox__item img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+.whatsInBox__item span {
+    font-size: var(--font-size-sm);
+    color: var(--amazon-text);
+}
+
+/* "About this item" Section (if product.description is provided) */
+.productPage__aboutItem {
+    margin-top: 15px;
+}
+.productPage__aboutItem h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.productPage__aboutItem p {
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    line-height: 1.6;
+}
+
+/* Product Details (ProductDetails Component) */
+.productPage__productDetails { /* Root div in ProductDetails */
+    margin-top: 0; /* Managed by parent gap */
+}
+.productPage__productDetails h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.productPage__productDetails table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+}
+.productPage__productDetails td {
+    padding: 8px 0;
+    vertical-align: top;
+    border-top: 1px solid #f0f0f0; /* Very light row separator */
+}
+.productPage__productDetails tr:first-child td {
+    border-top: none; /* No border on first row */
+}
+.productPage__productDetails .detail-key {
+    width: 40%;
+    color: var(--amazon-light-text);
+    font-weight: 500;
+}
+.productPage__productDetails .detail-value {
+    width: 60%;
+    color: var(--amazon-text);
+}
+
+/* Ask Rufus Section */
+.productPage__askRufus {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--amazon-border);
+    border-radius: 8px;
+    background-color: var(--amazon-white);
+    box-shadow: 0 0 5px rgba(0,0,0,0.03);
+}
+.productPage__askRufus h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.askRufus__questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.askRufus__questions button {
+    background-color: #F0F2F2;
+    border: 1px solid #D5D9D9;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: var(--font-size-sm);
+    color: var(--amazon-link);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.askRufus__questions button:hover {
+    background-color: #E3E6E6;
+    border-color: #C0C4C4;
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+.askRufus__questions .askRufus__askSomethingElse {
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: underline;
+    font-weight: 400;
+}
+.askRufus__questions .askRufus__askSomethingElse:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--amazon-link-hover);
+}
+
+
+/* --- Right Column: Checkout Box (ProductCheckoutBox Component) --- */
+.productPage__column--right {
+    position: sticky; /* Makes it stick while scrolling */
+    top: 20px; /* Distance from top of viewport */
+    align-self: flex-start; /* Ensures it aligns to the top of its grid area */
+    height: fit-content; /* Wraps its content tightly */
+    max-height: calc(100vh - 40px); /* Prevents overflow if content is too long */
+    overflow-y: auto; /* Enables scrolling if content exceeds max-height */
+    padding-left: 15px; /* Padding for separation from middle column */
+    box-sizing: border-box; /* Include padding in width */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+.productPage__column--right::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.productPage__checkoutBox {
+    border: 1px solid var(--amazon-border);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--amazon-white);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    display: flex; /* Use flex to stack internal elements */
+    flex-direction: column;
+    gap: 12px; /* Spacing between elements within checkout box */
+}
+
+.productPage__priceTop {
+    font-size: var(--font-size-3xl); /* Prominent price at the top */
+    font-weight: 500;
+    color: var(--amazon-price-red);
+    margin-bottom: 5px; /* Adjust spacing below price */
+}
+
+.productPage__deliveryText {
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    line-height: 1.4;
+}
+.productPage__deliveryBold {
+    font-weight: 700;
+}
+.productPage__deliveryLink {
+    color: var(--amazon-link);
+    text-decoration: none;
+    cursor: pointer;
+}
+.productPage__deliveryLink:hover {
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+
+.productPage__inStock {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-top: 10px; /* Space above in stock status */
+    margin-bottom: 10px; /* Space below in stock status */
+}
+.productPage__inStock.in-stock {
+    color: var(--amazon-green);
+}
+.productPage__inStock.out-of-stock {
+    color: var(--amazon-price-red);
+}
+
+.productPage__quantitySelector {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    margin-bottom: 10px; /* Space above buttons */
+}
+.productPage__quantitySelector label {
+    margin-right: 10px;
+    font-weight: 500;
+}
+.productPage__quantitySelector select {
+    padding: 8px 25px 8px 10px; /* Padding for text and custom arrow */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: var(--amazon-light-gray-bg);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    outline: none;
+    appearance: none; /* Hide default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23565959' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592c.859 0 1.319 1.013.753 1.658L8.753 11.14a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+}
+
+.productPage__addToCartButton,
+.productPage__buyNowButton {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 20px; /* Rounded corners for Amazon buttons */
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(255, 216, 20, 0.2); /* Subtle shadow for buttons */
+}
+
+.productPage__addToCartButton {
+    background-color: var(--amazon-yellow);
+    color: var(--amazon-text);
+    border: 1px solid #FCD200;
+}
+.productPage__addToCartButton:hover {
+    background-color: #F7CA00;
+    border-color: #F2C200;
+}
+
+.productPage__buyNowButton {
+    background-color: var(--amazon-orange);
+    color: var(--amazon-text);
+    border: 1px solid #FBAC2E;
+    box-shadow: 0 2px 5px rgba(255, 164, 28, 0.2);
+}
+.productPage__buyNowButton:hover {
+    background-color: var(--amazon-hover-orange);
+    border-color: #E68B00;
+}
+
+.button-icon { /* For Material-UI icons in buttons */
+    font-size: var(--font-size-xl) !important;
+}
+
+.productPage__secureTransaction {
+    font-size: var(--font-size-sm);
+    color: var(--amazon-light-text);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px; /* Space after buy now */
+}
+.secure-icon {
+    font-size: var(--font-size-md) !important;
+    color: var(--amazon-green);
+}
+
+.productPage__protectionPlan {
+    border-top: 1px solid #e7e7e7;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.protection-title {
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--amazon-text);
+}
+.protection-checkbox {
+    display: flex;
+    align-items: flex-start;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    line-height: 1.4;
+    color: var(--amazon-text);
+}
+.protection-checkbox input[type="checkbox"] {
+    margin-top: 2px;
+    margin-right: 8px;
+    accent-color: #f7a800; /* Style checkbox itself */
+    transform: scale(1.1);
+}
+
+.productPage__addToWishList { /* Root div around the wishlist button */
+    border-top: 1px solid #e7e7e7;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.productPage__addToWishList button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--amazon-border);
+    border-radius: 20px;
+    background-color: var(--amazon-light-gray-bg);
+    color: var(--amazon-text);
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.productPage__addToWishList button:hover {
+    background-color: #E3E6E6;
+    border-color: #C0C4C4;
+}
+
+.productPage__otherSellers {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--amazon-white);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    font-size: var(--font-size-base);
+}
+.productPage__otherSellers h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--amazon-text);
+}
+.productPage__otherSellers p {
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    margin-bottom: 8px;
+}
+.productPage__otherSellers p:last-child {
+    margin-bottom: 0;
+}
+.productPage__priceBold {
+    font-weight: 700;
+    color: var(--amazon-price-red);
+}
+.productPage__freeDelivery {
+    font-weight: 700;
+    color: var(--amazon-green);
+}
+.productPage__otherSellersLink {
+    color: var(--amazon-link);
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+}
+.productPage__otherSellersLink:hover {
+    color: var(--amazon-link-hover);
+    text-decoration: underline;
+}
+
+/* --- Customer Reviews Section (ProductReviews Component) --- */
+/* This section is *outside* the main .productPage grid, centered below it */
+.productPage__reviewsContainer { /* Wrapper for ProductReviews component */
+    margin-top: 40px; /* Space from the main product content above */
+    padding: 20px;
+    background-color: var(--amazon-white);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    width: 100%; /* Take full width of its parent container */
+    max-width: 1200px; /* Match max-width of main product grid */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.productPage__reviews h2 {
+    font-size: var(--font-size-2xl); /* Prominent heading */
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--amazon-text);
+}
+
+/* Individual Review Item Styling */
+.productPage__reviews > div.border.rounded.p-3.mb-2 { /* Adjusting default Tailwind classes */
+    border: 1px solid #e0e0e0; /* Lighter border for individual reviews */
+    border-radius: 8px;
+    padding: 15px; /* More padding */
+    margin-bottom: 15px; /* More space between reviews */
+    background-color: #fcfcfc; /* Slight background */
+}
+
+.productPage__reviews .font-bold { /* User name */
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+}
+
+.productPage__reviews .text-yellow-500 { /* Star emojis */
+    color: #FF9900; /* Consistent star color */
+    font-size: var(--font-size-lg); /* Larger stars for review display */
+    margin-top: 5px; /* Space below username */
+    margin-bottom: 5px; /* Space above comment */
+}
+
+.productPage__reviews p { /* Review comment text */
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--amazon-text);
+}
+
+.productPage__reviews small.text-gray-500 { /* Date */
+    font-size: var(--font-size-sm);
+    color: var(--amazon-light-text);
+    margin-top: 8px;
+    display: block; /* Ensures it starts on a new line */
+}
+
+/* Write a Review Form Styling */
+.productPage__reviews form {
+    padding: 20px;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    background-color: #fafdff; /* Slightly different background for the form */
+}
+
+.productPage__reviews h3.text-lg.font-medium.mb-2 { /* "Write a Review" heading */
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--amazon-text);
+}
+
+.productPage__reviews label.block.mb-2 { /* Rating select label */
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.productPage__reviews select.ml-2.border.p-1 { /* Rating dropdown */
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    background-color: var(--amazon-white);
+    cursor: pointer;
+    margin-left: 10px;
+    outline: none;
+}
+
+.productPage__reviews textarea.w-full.border.p-2.mb-2 { /* Review textarea */
+    min-height: 120px; /* Taller textarea */
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-family: inherit; /* Inherit font from body */
+    margin-bottom: 15px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.08); /* Inner shadow */
+}
+
+.productPage__reviews button.bg-yellow-500.px-4.py-2.rounded.text-white { /* Submit button */
+    background-color: var(--amazon-yellow);
+    color: var(--amazon-text); /* Black text on yellow button */
+    padding: 10px 20px;
+    border: 1px solid #FCD200;
+    border-radius: 20px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(255, 216, 20, 0.2);
+}
+.productPage__reviews button.bg-yellow-500.px-4.py-2.rounded.text-white:hover {
+    background-color: #F7CA00;
+    border-color: #F2C200;
+}
+
+.productPage__reviews p > .text-blue-600.underline { /* Login link */
+    color: var(--amazon-link);
+    text-decoration: underline;
+}
+.productPage__reviews p > .text-blue-600.underline:hover {
+    color: var(--amazon-link-hover);
+}
+
+/* Specific Styles for Out of Stock Page (Gucci Bag Example from image_2f52a5.jpg) */
+/* Apply this class `out-of-stock` to your main `.productPage` div when the item is out of stock */
+.productPage.out-of-stock {
+    grid-template-columns: 1.5fr 1fr; /* Image + Details, then Checkout/Reviews become two cols */
+    gap: 30px; /* Increase gap for cleaner separation */
+    padding: 20px;
+}
+
+.productPage.out-of-stock .productPage__column--left {
+    flex-direction: row; /* Keep image and (hidden) thumbnails horizontal */
+    justify-content: center;
+    align-items: center;
+}
+.productPage.out-of-stock .thumbnailSliderWrapper {
+    display: none; /* Hide slider buttons for out of stock */
+}
+.productPage.out-of-stock .productPage__thumbnailGalleryLeft {
+    display: none; /* Hide vertical thumbnails if only one image or simplified layout */
+}
+
+.productPage.out-of-stock .productPage__mainImageContainer {
+    max-width: 250px; /* Smaller main image for simplified layout */
+    height: 250px;
+    border: none; /* Remove border from the image container */
+    box-shadow: none; /* Remove shadow */
+    margin-right: 0; /* Remove right margin if no thumbnails next to it */
+}
+
+/* Hide sections not present on the "Out of Stock" page */
+.productPage.out-of-stock .productPage__offers,
+.productPage.out-of-stock .productPage__priceSection > div:nth-of-type(2), /* Hides Inclusive of all taxes */
+.productPage.out-of-stock .productPage__priceSection > div:nth-of-type(3), /* Hides EMI */
+.productPage.out-of-stock .productPage__quantitySelector,
+.productPage.out-of-stock .productPage__buyNowButton,
+.productPage.out-of-stock .productPage__protectionPlan,
+.productPage.out-of-stock .productPage__secureTransaction,
+.productPage.out-of-stock .productPage__whatsInBox,
+.productPage.out-of-stock .productPage__askRufus {
+    display: none !important; /* Use !important to override if Tailwind styles are strong */
+}
+
+.productPage.out-of-stock .productPage__priceTop {
+    display: none !important; /* The price on top right of checkout box is gone */
+}
+
+.productPage.out-of-stock .productPage__deliveryText {
+    font-size: var(--font-size-base);
+    text-align: left;
+    margin-top: 5px;
+}
+.productPage.out-of-stock .productPage__deliveryBold {
+    display: block; /* New line for "FREE Delivery Today" */
+}
+
+.productPage.out-of-stock .productPage__inStock {
+    font-size: var(--font-size-xl);
+    color: var(--amazon-price-red);
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.productPage.out-of-stock .productPage__addToCartButton {
+    background-color: var(--amazon-light-gray-bg) !important; /* Grayed out or disabled look */
+    color: var(--amazon-light-text) !important;
+    cursor: not-allowed !important;
+    border: 1px solid var(--amazon-border) !important;
+    box-shadow: none !important;
+}
+.productPage.out-of-stock .productPage__addToCartButton:hover {
+    background-color: var(--amazon-light-gray-bg) !important; /* No change on hover */
+    border-color: var(--amazon-border) !important;
+}
+
+/* Out of Stock: Right Column structure for Reviews and Other Sellers */
+.productPage.out-of-stock .productPage__column--right {
+    position: static; /* No longer sticky */
+    padding-left: 0; /* Remove padding */
+    max-height: unset;
+    overflow-y: visible;
+    display: flex; /* Stack review summary and other sellers vertically */
+    flex-direction: column;
+    gap: 20px; /* Space between the two boxes */
+}
+
+.productPage.out-of-stock .productPage__checkoutBox {
+    border: none; /* Remove border for a cleaner look if desired */
+    box-shadow: none; /* Remove shadow */
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Transparent background */
+    display: block; /* Reset to block for child elements */
+    gap: 0;
+}
+
+/* Specific box for "User Reviews" on the right in out-of-stock (if CheckoutBox renders it) */
+/* You would need to add conditional JSX in ProductCheckoutBox to render this box */
+.productPage__userReviewsBox { /* This should be rendered by your ProductCheckoutBox when out of stock */
+    border: 1px solid var(--amazon-border);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--amazon-white);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px; /* Space to "Other sellers" */
+}
+.productPage__userReviewsBox h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--amazon-text);
+}
+.productPage__userReviewsBox p {
+    font-size: var(--font-size-sm);
+    color: var(--amazon-light-text);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+.productPage__userReviewsBox .write-review-button {
+    background-color: #F0F2F2;
+    color: var(--amazon-text);
+    padding: 8px 15px;
+    border: 1px solid #D5D9D9;
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    margin-top: 10px;
+}
+.productPage__userReviewsBox .write-review-button:hover {
+    background-color: #E3E6E6;
+}
+
+/* Loading and Not Found Messages */
+.productPage__loading, .productPage__notFound {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--amazon-text);
+    margin-top: 50px;
+}
+.productPage__notFound {
+    color: var(--amazon-price-red);
+}
+
+
+/* --- Responsive Design Media Queries --- */
+
+@media (max-width: 1024px) {
+    .productPage {
+        grid-template-columns: 1fr; /* Stack all main columns into a single column */
+        gap: 20px;
+        padding: 15px;
+    }
+
+    /* Reset sticky/self-alignment for all grid children on smaller screens */
+    .productPage > div {
+        position: static;
+        align-self: auto;
+        max-height: unset;
+        overflow-y: visible;
+        padding-left: 0; /* Remove specific horizontal padding for these columns */
+        padding-right: 0;
+    }
+
+    /* ProductImageGallery adjustments when stacked */
+    .productPage__column--left { /* Target the root div for ProductImageGallery */
+        flex-direction: column; /* Stack image gallery contents vertically */
+        align-items: center; /* Center the stacked content */
+        gap: 15px;
+    }
+
+    .thumbnailSliderWrapper {
+        flex-direction: row; /* Slider buttons and thumbnails horizontally */
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px; /* Space below main image */
+    }
+
+    .productPage__thumbnailGalleryLeft {
+        flex-direction: row; /* Thumbnails display horizontally below main image */
+        flex-wrap: wrap;
+        justify-content: center;
+        max-height: unset;
+        overflow-y: visible;
+        padding-right: 0;
+        gap: 8px;
+        width: auto; /* Allow thumbnails to determine their width */
+    }
+
+    .productPage__thumbnail {
+        width: 50px; /* Slightly smaller thumbnails on tablets */
+        height: 50px;
+    }
+
+    .productPage__mainImageContainer {
+        width: 100%; /* Allow main image to take more width */
+        max-width: 400px; /* Constrain its max width for larger tablets */
+        height: 380px; /* Fixed height is maintained for this breakpoint */
+        margin: 0 auto; /* Center the main image container */
+    }
+
+    .productPage__column--middle {
+        padding: 0 10px; /* Add some horizontal padding to middle section on tablets */
+        gap: 10px; /* Smaller gap for tighter layout */
+    }
+    .productPage__offerGrid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+    }
+
+    .productPage__column--right {
+        margin-top: 20px; /* Add margin to separate from middle section when stacked */
+    }
+
+    /* Out of stock specific adjustments for stacking */
+    .productPage.out-of-stock {
+        grid-template-columns: 1fr; /* Stack into single column on smaller screens */
+    }
+    .productPage.out-of-stock .productPage__mainImageContainer {
+        max-width: 250px; /* Further reduce for stacked out of stock */
+        height: 250px;
+    }
+    .productPage.out-of-stock .productPage__checkoutBox {
+        flex-direction: column; /* Stack the two right boxes */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .productPage {
+        padding: 10px;
+        gap: 15px;
+    }
+    .productPage__mainImageContainer {
+        height: 300px; /* Further reduce height for smaller tablets/phones */
+        max-width: 95%; /* Adjust width to fit */
+    }
+    .productPage__thumbnail {
+        width: 45px;
+        height: 45px;
+    }
+    .productPage__title {
+        font-size: var(--font-size-2xl);
+    }
+    .productPage__currentPrice {
+        font-size: var(--font-size-3xl);
+    }
+    .productPage__column--middle {
+        padding: 0 10px; /* Add some horizontal padding to middle section on tablets */
+        gap: 8px;
+    }
+    .productPage__offerGrid {
+        grid-template-columns: 1fr; /* Stack offers vertically on smaller screens */
+        gap: 10px;
+    }
+    .productPage__reviewsContainer {
+        margin-top: 30px; /* Slightly less margin for reviews section */
+        padding: 15px;
+    }
+    .productPage__reviews h2 {
+        font-size: var(--font-size-xl); /* Smaller heading for reviews */
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .productPage__container {
+        padding: 10px;
+    }
+    .productPage {
+        padding: 5px;
+        gap: 10px;
+    }
+    .productPage__mainImageContainer {
+        height: 250px; /* Smallest height for mobile */
+        max-width: 100%; /* Allow full width on smallest screens */
+    }
+    .productPage__thumbnail {
+        width: 35px;
+        height: 35px;
+    }
+    .productPage__title {
+        font-size: var(--font-size-lg);
+    }
+    .productPage__currentPrice {
+        font-size: var(--font-size-2xl);
+    }
+    .productPage__column--middle {
+        padding: 0 5px; /* Minimal padding on smallest screens */
+        gap: 8px;
+    }
+    .productPage__reviewsContainer {
+        margin-top: 20px;
+        padding: 10px;
+    }
+    .productPage__addToCartButton,
+    .productPage__buyNowButton,
+    .productPage__addToWishList button {
+        font-size: var(--font-size-base);
+        padding: 8px;
+    }
+
+
+    /* Add to ProductPage.css or create src/ProductReviews.css */
+
+.productPage__reviews {
+    /* Already defined in ProductPage.css, but adding specific classes for clarity */
+}
+
+.productReviews__list {
+    margin-top: 20px;
+}
+
+.productReviews__item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fcfcfc;
+}
+
+.productReviews__userName {
+    font-weight: bold;
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    margin-bottom: 5px;
+}
+
+.productReviews__stars {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.productReviews__stars .star-filled {
+    color: #FF9900; /* Amazon's star color */
+    font-size: var(--font-size-lg);
+}
+
+.productReviews__stars .star-empty {
+    color: #ccc; /* Grey for empty stars */
+    font-size: var(--font-size-lg);
+}
+
+.productReviews__comment {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--amazon-text);
+}
+
+.productReviews__date {
+    font-size: var(--font-size-sm);
+    color: var(--amazon-light-text);
+    margin-top: 8px;
+    display: block;
+}
+
+.productReviews__writeReview {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    background-color: #fafdff;
+}
+
+.productReviews__writeReview h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--amazon-text);
+}
+
+.reviewForm__rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewForm__rating label {
+    font-size: var(--font-size-base);
+    color: var(--amazon-text);
+    margin-right: 10px;
+}
+
+.reviewForm__rating select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    background-color: var(--amazon-white);
+    cursor: pointer;
+    outline: none;
+}
+
+.productReviews__writeReview textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    margin-bottom: 15px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.productReviews__writeReview button {
+    background-color: var(--amazon-yellow);
+    color: var(--amazon-text);
+    padding: 10px 20px;
+    border: 1px solid #FCD200;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(255, 216, 20, 0.2);
+}
+
+.productReviews__writeReview button:hover {
+    background-color: #F7CA00;
+    border-color: #F2C200;
+}
+
+.productReviews__writeReview button:disabled {
+    background-color: var(--amazon-light-gray-bg);
+    color: var(--amazon-light-text);
+    border-color: var(--amazon-border);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.productReviews__writeReview p a {
+    color: var(--amazon-link);
+    text-decoration: underline;
+}
+
+.productReviews__writeReview p a:hover {
+    color: var(--amazon-link-hover);
+}
+
+.error-message {
+    color: var(--amazon-price-red);
+    font-size: var(--font-size-base);
+    text-align: center;
+    margin-top: 10px;
+}
+}

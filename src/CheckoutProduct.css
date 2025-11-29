@@ -1,0 +1,198 @@
+/* Styles for CheckoutProduct component */
+.checkoutProduct {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Arial', sans-serif;
+  gap: 20px; /* Space between image and info */
+}
+
+.checkoutProduct img {
+  width: 120px;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.checkoutProduct__info {
+  flex: 1; /* Allows info section to take up remaining space */
+  padding-left: 10px;
+}
+
+.checkoutProduct__title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 8px; /* Space below title */
+}
+
+.checkoutProduct__price {
+  font-size: 14px;
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 8px; /* Space below price */
+}
+
+.checkoutProduct__price small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Container for quantity controls and action links */
+.checkoutProduct__controlsAndActions {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-top: 10px; /* Space above this section */
+  margin-bottom: 15px; /* Space below this section */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 15px; /* Space between quantity controls and action links */
+}
+
+/* Quantity Controls */
+.checkoutProduct__quantityControls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f2f2; /* Light background for the quantity box */
+  overflow: hidden; /* Ensures rounded corners apply correctly */
+}
+
+.checkoutProduct__quantityControls button {
+  background-color: #f0f2f2; /* Match container background */
+  border: none; /* Remove individual button borders */
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  color: #0f1111; /* Dark text color */
+}
+
+.checkoutProduct__quantityControls button:hover:not(:disabled) {
+  background-color: #e3e6e6; /* Slightly darker on hover */
+}
+
+.checkoutProduct__quantityControls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f0f2f2; /* Keep background same when disabled */
+}
+
+.checkoutProduct__quantityDisplay {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #0f1111;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  min-width: 30px; /* Ensure space for quantity numbers */
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Action Links (Delete, Save for later, etc.) */
+.checkoutProduct__actionLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allow links to wrap */
+  gap: 5px; /* Smaller gap between links */
+}
+
+.checkoutProduct__actionLink {
+  background: none;
+  border: none;
+  color: #007185; /* Amazon link blue */
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none; /* For anchor tags */
+  padding: 0 5px; /* Small padding for click area */
+  transition: color 0.2s ease;
+}
+
+.checkoutProduct__actionLink:hover {
+  text-decoration: underline;
+  color: #c45500; /* Amazon orange on hover */
+}
+
+.checkoutProduct__actionSeparator {
+  color: #ccc; /* Light gray separator */
+  font-size: 13px;
+  margin: 0 2px; /* Space around separator */
+}
+
+
+.checkoutProduct__rating {
+  display: flex;
+  font-size: 14px;
+  color: #f0c14b; /* Amazon star color */
+  margin-top: 4px;
+  margin-right: 2px;
+  margin-bottom: 12px; /* Space below rating */
+}
+
+
+
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .checkoutProduct {
+    flex-direction: column; /* Stack image and info vertically */
+    text-align: center; /* Center text content */
+    align-items: center; /* Center items when stacked */
+  }
+
+  .checkoutProduct img {
+    width: 150px;
+    height: 150px;
+    margin-right: 0; /* Remove horizontal margin */
+    margin-bottom: 15px; /* Add vertical margin below image */
+  }
+
+  .checkoutProduct__info {
+    padding-left: 0; /* Remove left padding */
+  }
+
+  .checkoutProduct__rating,
+  .checkoutProduct__quantityControls,
+  .checkoutProduct__actionLinks {
+    justify-content: center; /* Center elements */
+    width: 100%; /* Take full width */
+  }
+
+  .checkoutProduct__controlsAndActions {
+    flex-direction: column; /* Stack controls and actions vertically */
+    align-items: center;
+    gap: 10px; /* Adjust gap for vertical stacking */
+  }
+
+  .checkoutProduct__actionLinks {
+    justify-content: center; /* Center links when wrapped */
+  }
+}
+/* Amazon-style star ratings with half-star support */
+.checkoutProduct__ratingStars {
+  display: inline-block;
+  width: 85px;
+  height: 16px;
+  background-image: url('https://raw.githubusercontent.com/saadpasta/developerFolio/master/src/assets/images/amazon-stars-sprite.png');
+  background-repeat: no-repeat;
+  background-size: 85px auto;
+  margin-top: 6px;
+}
+
+.star-0   { background-position-y: 0px; }
+.star-0_5 { background-position-y: -16px; }
+.star-1   { background-position-y: -32px; }
+.star-1_5 { background-position-y: -48px; }
+.star-2   { background-position-y: -64px; }
+.star-2_5 { background-position-y: -80px; }
+.star-3   { background-position-y: -96px; }
+.star-3_5 { background-position-y: -112px; }
+.star-4   { background-position-y: -128px; }
+.star-4_5 { background-position-y: -144px; }
+.star-5   { background-position-y: -160px; }

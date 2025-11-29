@@ -1,0 +1,45 @@
+/* OfferAnimatedText.css */
+.offer-text-container {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(180deg, #f5f4f9, #e8e6f3); or your preferred premium bg */
+}
+
+.offer-line {
+  font-size: 4rem;
+  font-weight: 400;
+  /* font-family: 'Suisse Intl', 'Poppins', 'Helvetica Neue', sans-serif; */
+  font-family: 'Satoshi', sans-serif;
+
+
+
+  font-family: 'Outfit', sans-serif;
+font-weight: 300;
+  /* color: #121212; */
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+.offer-left-text {
+  width: 100%;
+  max-width: 600px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.animated-line {
+  font-family: 'Satoshi', 'General Sans', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: white;
+}
+

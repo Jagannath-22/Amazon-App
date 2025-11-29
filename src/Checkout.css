@@ -1,0 +1,35 @@
+
+.checkout__ad {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 6px;
+      background-color: white;
+}
+.checkout {
+  display: flex;
+  justify-content: center;
+  padding:10px;
+  background-color: #eaeded;
+}
+
+.checkout__left {
+  width: 70%;
+  max-width: 700px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.checkout__right {
+  
+  width: 100%;
+    max-width: 280px; /* same size as Amazon right card */
+
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: white;
+  padding: 40px;
+  height: fit-content;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,112 @@
+/* Main Navbar Container */
+.secondary-navbar {
+  background-color: #232f3e; /* Amazon's dark blue/charcoal color */
+  height: 39px; /* Exact height as per Amazon's secondary navbar */
+  display: flex;
+  align-items: center;
+  padding: 0 10px; /* Padding on sides */
+  color: #fff; /* White text color */
+  font-family: 'Amazon Ember', Arial, sans-serif; /* Amazon's font or a similar sans-serif */
+  font-size: 14px;
+  overflow-x: auto; /* Enable horizontal scrolling for many items on small screens */
+  white-space: nowrap; /* Prevent items from wrapping */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.secondary-navbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Left section with "All" icon and logo */
+.secondary-navbar__left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; /* Prevent this section from shrinking */
+  margin-right: 15px; /* Space between left section and nav items */
+}
+
+/* Common link styling */
+.secondary-navbar__link {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 9px; /* Padding for click area */
+  border: 1px solid transparent; /* Transparent border for hover effect */
+  border-radius: 3px;
+  transition: border-color 0.1s ease-in-out;
+  display: flex; /* For aligning icon and text */
+  align-items: center;
+  height: 100%; /* Ensure link takes full height for consistent hover */
+}
+
+.secondary-navbar__link:hover {
+  border-color: #fff; /* White border on hover */
+}
+
+/* "All" menu link specific styling */
+.secondary-navbar__all-link {
+  font-weight: 700; /* Bolder text for "All" */
+  margin-right: 10px; /* Space between "All" and other links */
+}
+
+.secondary-navbar__all-icon {
+  font-size: 20px; /* Size of the Material Icon */
+  margin-right: 5px;
+}
+
+/* Amazon logo styling */
+.secondary-navbar__logo-link {
+    padding: 0; /* Remove padding for the logo link */
+    height: 25px; /* Fixed height for the logo container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; /* Space after logo */
+}
+
+.secondary-navbar__logo {
+  height: 25px; /* Adjust logo height to fit */
+  width: auto; /* Maintain aspect ratio */
+  filter: brightness(0) invert(1); /* Makes SVG white if it's black */
+}
+
+/* Navigation items container */
+.secondary-navbar__nav-items {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Space between nav items */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .secondary-navbar {
+    padding: 0 5px; /* Reduce padding on smaller screens */
+    font-size: 13px;
+  }
+  .secondary-navbar__link {
+    padding: 8px 7px;
+  }
+  .secondary-navbar__all-icon {
+    font-size: 18px;
+  }
+  .secondary-navbar__logo {
+    height: 22px;
+  }
+  .secondary-navbar__left {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .secondary-navbar__left {
+    margin-right: 5px;
+  }
+  .secondary-navbar__all-link {
+    padding: 8px 5px;
+  }
+  .secondary-navbar__nav-items {
+    gap: 3px;
+  }
+}

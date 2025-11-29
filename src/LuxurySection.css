@@ -1,0 +1,186 @@
+/* Base container for the entire Luxury Section */
+.luxury-section-container {
+  padding: 40px 20px;
+  background: linear-gradient(to right, #fefefe, #f4f4f4);
+  margin-bottom: 40px;
+  /* border-radius: 20px; */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Important for horizontal scrolling */
+  font-family: 'Poppins', sans-serif;
+  text-align: center; /* Center the title */
+  background: linear-gradient(to right, #fff6ec, #f5e1ff);
+  /* background: linear-gradient(to right, #fff1e0, #f0e7ff); */
+   /* background: #1a1a2e; */
+   /* background: linear-gradient(to right, #0f0f0f, #2a2a2a);
+color: white; */
+
+}
+
+/* Title styling for the Luxury Section */
+.luxury-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 30px; /* Space below the title */
+  display: inline-block; /* Allows span animation to work correctly */
+  white-space: nowrap; /* Prevents text from wrapping during animation */
+}
+
+/* Individual letter animation styling (managed by Framer Motion) */
+.luxury-section-title span {
+  display: inline-block; /* Each letter is an inline-block for animation */
+}
+
+/* Wrapper for the carousel to handle overflow and provide padding */
+.luxury-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0 20px; /* Padding on sides for the carousel items */
+  box-sizing: border-box;
+}
+
+/* The actual carousel container that scrolls horizontally */
+.luxury-carousel {
+  display: flex;
+  gap: 25px; /* Space between brand cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling for manual actions */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  padding-bottom: 15px; /* Space for scrollbar */
+  /* Hide scrollbar for aesthetics */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.luxury-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Luxury Brand Card styling */
+.luxury-brand-card {
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  width: 280px; /* Fixed width for each card */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures image corners are rounded */
+  text-align: center;
+  padding-bottom: 15px; /* Space below content */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions for hover */
+  cursor: pointer; /* Indicate clickable */
+}
+
+/* Image inside the card */
+.luxury-brand-image {
+  width: 100%;
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin-bottom: 15px; /* Space below image */
+}
+
+/* Brand name styling */
+.luxury-brand-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 10px; /* Horizontal margin for text */
+}
+
+/* Link styling inside cards */
+.luxury-brand-card a {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .luxury-section-title {
+    font-size: 2.2rem;
+  }
+  .luxury-brand-card {
+    width: 250px;
+  }
+  .luxury-brand-image {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  .luxury-carousel {
+    gap: 15px;
+    padding: 0 10px;
+  }
+  .luxury-brand-card {
+    width: 220px;
+  }
+  .luxury-brand-image {
+    height: 160px;
+  }
+  .luxury-brand-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .luxury-section-container {
+    padding: 30px 10px;
+  }
+  .luxury-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .luxury-carousel {
+    gap: 10px;
+    padding: 0 5px;
+  }
+  .luxury-brand-card {
+    width: 180px; /* Smaller cards for mobile */
+  }
+  .luxury-brand-image {
+    height: 140px;
+  }
+  .luxury-brand-name {
+    font-size: 1rem;
+  }
+}
+
+
+.luxury-brand-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.luxury-action-button {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.luxury-action-button:hover {
+  transform: scale(1.1);
+  background: #f0c14b;
+}
+
+
+@media (max-width: 768px) {
+  .luxury-brand-actions {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .luxury-action-button {
+    padding: 6px;
+  }
+}

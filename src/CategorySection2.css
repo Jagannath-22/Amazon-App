@@ -1,0 +1,239 @@
+.category-section-container {
+  padding-bottom: 0px 0px;
+  background-color: #eaeded;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  margin-top: auto;
+  padding: 40px 20px;
+}
+
+.category-scroll-wrapper {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* Scrollable grid: left part */
+.scrollable-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+  flex: 1;
+}
+
+.scrollable-grid::-webkit-scrollbar {
+  height: 1px;
+}
+.scrollable-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-grid::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Video box: fixed to right */
+.fixed-video-box {
+  flex: 0 0 320px;
+  margin-left: 20px;
+}
+
+/* Category Box - square and compact */
+.category-box {
+  width: 265px;
+  height: 265px;
+  background-color: #fff;
+  /* border-radius:8 px; */
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  overflow: hidden;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+.category-box__title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+/* Grid of 4 products (2x2) inside each box */
+.category-box__products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width:thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.category-box__products-grid::-webkit-scrollbar {
+  width: 4px;
+}
+.category-box__products-grid::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 8px;
+}
+
+/* Product container (clickable) */
+.category-product-item {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 auto;
+}
+/* Ensures consistent vertical spacing is removed */
+.category-product-item > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.category-product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.category-product-title {
+  font-size: 11px;
+  color: #333;
+  margin-top: 4px;
+  text-align: center;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Link below products */
+.category-box__link {
+  font-size: 11px;
+  color: #007185;
+  margin-top: auto;
+  text-decoration: none;
+}
+
+.category-box__link:hover {
+  color: #c45500;
+  /* text-decoration: underline; */
+}
+
+/* Video container */
+.category-box__video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 10px;
+  /* background: #000; */
+}
+
+.category-box__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #fff;
+}
+.category-product-item:hover .category-product-image {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.002);
+  transition: all 0.3s ease;
+}
+.category-product-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-product-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.category-product-item:hover .category-product-image {
+  transform: scale(1.05) rotate(0.5deg); /* subtle tilt */
+}
+
+/* -------------------------- */
+/* Responsive: tablet + mobile */
+/* -------------------------- */
+/* 
+@media (max-width: 1024px) {
+  .category-box {
+    width: 200px;
+    height: 220px;
+    padding: 12px;
+  }
+  .category-box__title {
+    font-size: 13px;
+  }
+  .category-product-title {
+    font-size: 10px;
+  }
+  .fixed-video-box {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-scroll-wrapper {
+    flex-direction: column;
+  }
+  .scrollable-grid {
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+  .fixed-video-box {
+    margin-left: 0;
+    width: 100%;
+  }
+  .category-box {
+    width: 100%;
+    height: auto;
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-box {
+    padding: 10px;
+  }
+  .category-box__title {
+    font-size: 12px;
+  }
+  .category-product-title {
+    font-size: 10px;
+  }
+} */

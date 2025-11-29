@@ -1,0 +1,296 @@
+/* Product.css - Designed for Amazon-like Horizontal Listing */
+
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px; /* Space between each product listing */
+    padding: 15px 20px;
+    margin-left: 150px;
+     margin-right: 150px; 
+
+    display: flex;
+    flex-direction: column; /* Allows sponsored tag on top, then content below */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); /* Subtle shadow */
+    transition: box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.product:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1); /* More pronounced shadow on hover */
+}
+
+/* --- Sponsored Tag Area --- */
+.product__sponsored-container {
+    align-self: flex-start; /* Aligns to the left of the main container */
+    margin-bottom: 8px;
+}
+
+.product__sponsored {
+    font-size: 12px;
+    color: #767676;
+    display: flex;
+    align-items: center;
+}
+
+.product__sponsored-info-icon {
+    font-size: 10px; /* Smaller 'i' icon */
+    border: 1px solid #767676;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    cursor: help;
+}
+
+/* --- Main Product Content (Image + Details) --- */
+.product__content {
+    display: flex; /* This is key for horizontal layout */
+    align-items: flex-start; /* Aligns content to the top */
+    gap: 20px; /* Space between image and details */
+    width: 100%; /* Take full width of parent */
+}
+
+/* --- Product Image Link --- */
+.product__image-link {
+    flex-shrink: 0; /* Prevents image from shrinking */
+    width: 200px; /* Fixed width for the image container */
+    height: 200px; /* Fixed height for the image container */
+    display: flex; /* To center the image vertically/horizontally */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.product__image {
+    max-width: 100%; /* Ensures image fits within its container */
+    max-height: 100%; /* Ensures image fits within its container */
+    object-fit: contain; /* Keeps aspect ratio */
+}
+
+/* --- Product Details Section (Right Side) --- */
+.product__details {
+    flex-grow: 1; /* Allows details to take up remaining space */
+    display: flex;
+    flex-direction: column; /* Stacks detail elements vertically */
+    text-align: left; /* Aligns all text to the left */
+}
+
+/* --- Product Title Link --- */
+.product__title-link {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent by default */
+}
+
+.product__title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #007185; /* Amazon link blue */
+    line-height: 1.3;
+    margin-bottom: 5px;
+    /* Optional: Limit title to 1-2 lines for cleaner look */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Adjust as needed */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product__title-link:hover .product__title {
+    color: #c7511f; /* Amazon orange on hover */
+    text-decoration: underline;
+}
+
+/* --- Rating Area --- */
+.product__rating-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.product__rating-stars-wrapper {
+    display: inline-block; /* Essential for containing the sprite */
+}
+
+/* Your existing star sprite CSS - IMPORTANT: Remove `background-color: red !important;` */
+.checkoutProduct__ratingStars {
+    /* background-color: red !important;  <-- REMOVE THIS DEBUG STYLE */
+    display: inline-block;
+    width: 85px; /* Width for 5 stars */
+    height: 16px;
+    background-image: url('https://raw.githubusercontent.com/shivamkapasia0/Amazon-clone/master/public/images/amazon-stars.png');
+    background-repeat: no-repeat;
+    background-size: 85px auto;
+    vertical-align: middle; /* Aligns sprite with text */
+}
+
+/* Star rows: each rating state is 16px tall in the sprite */
+.star-0    { background-position-y: 0px; }
+.star-0_5  { background-position-y: -16px; }
+.star-1    { background-position-y: -32px; }
+.star-1_5  { background-position-y: -48px; }
+.star-2    { background-position-y: -64px; }
+.star-2_5  { background-position-y: -80px; }
+.star-3    { background-position-y: -96px; }
+.star-3_5  { background-position-y: -112px; }
+.star-4    { background-position-y: -128px; }
+.star-4_5  { background-position-y: -144px; }
+.star-5    { background-position-y: -160px; }
+
+
+.product__rating-count {
+    font-size: 13px;
+    color: #007185; /* Amazon link blue */
+    margin-left: 5px;
+    text-decoration: none; /* Ensure no underline */
+}
+
+.product__rating-count:hover {
+    color: #c7511f; /* Amazon orange on hover */
+    text-decoration: underline;
+}
+
+/* --- K+ bought in past month --- */
+.product__boughtInMonth {
+    font-size: 13px;
+    color: #565959;
+    margin-bottom: 5px;
+}
+
+.product__boughtInMonth-value {
+    font-weight: bold; /* Make the number bold */
+}
+
+/* --- Price Section --- */
+.product__price-section {
+    display: flex;
+    align-items: flex-end; /* Align to the bottom of the line */
+    flex-wrap: wrap; /* Allow items to wrap if space is tight */
+    margin-bottom: 5px;
+}
+
+.product__currentPrice {
+    font-size: 28px; /* Large for main price */
+    font-weight: 700;
+    color: #0f1111;
+    line-height: 1; /* Tighter line height */
+    margin-right: 8px; /* Space before MRP */
+}
+
+.product__currency-symbol {
+    font-size: 14px; /* Smaller for currency symbol */
+    vertical-align: super; /* Aligns symbol higher */
+}
+
+.product__mrp {
+    font-size: 13px;
+    color: #565959;
+    line-height: 1; /* Tighter line height */
+    margin-right: 8px; /* Space before discount */
+}
+
+.product__originalPrice-value {
+    color: #565959; /* Ensures strikethrough text is gray */
+}
+
+.product__discount-percentage {
+    font-size: 13px;
+    font-weight: 600;
+    color: #cc0c39; /* Red for discount */
+    line-height: 1; /* Tighter line height */
+}
+
+.product__cashback {
+    font-size: 13px;
+    color: #565959;
+    margin-bottom: 8px;
+}
+
+/* --- Delivery Date --- */
+.product__deliveryDate {
+    font-size: 13px;
+    color: #0f1111;
+    margin-bottom: 5px;
+}
+
+.product__deliveryDate-bold {
+    font-weight: bold;
+}
+
+.product__service {
+    font-size: 13px;
+    color: #565959;
+    margin-bottom: 15px; /* Space before buttons */
+}
+
+/* --- Action Buttons/Links --- */
+.product__actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons/links vertically */
+    align-items: flex-start; /* Align action items to the left */
+    gap: 8px; /* Space between button and link */
+    margin-top: auto; /* Pushes actions to the bottom of details column */
+}
+
+.product__addToCartButton {
+    background: #f0c14b; /* Amazon's yellow button */
+    border: 1px solid;
+    border-color: #a88734 #9c7e31 #846a29; /* Amazon's specific button borders */
+    color: #111;
+    padding: 8px 20px; /* Generous padding */
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 150px; /* Fixed width for the button like Amazon */
+    text-align: center;
+    transition: background 0.2s ease-in-out;
+}
+
+.product__addToCartButton:hover {
+    background: #e3b036; /* Slightly darker yellow on hover */
+}
+
+.product__otherColorsLink {
+    font-size: 13px;
+    color: #007185; /* Amazon link blue */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.product__otherColorsLink:hover {
+    text-decoration: underline;
+    color: #c7511f; /* Amazon orange on hover */
+}
+
+/* --- Responsive Adjustments (Optional but Recommended) --- */
+@media (max-width: 768px) {
+    .product__content {
+        flex-direction: column; /* Stack image and details vertically on smaller screens */
+        align-items: center; /* Center them when stacked */
+    }
+
+    .product__image-link {
+        width: 150px; /* Smaller image on mobile */
+        height: 150px;
+        margin-bottom: 10px;
+    }
+
+    .product__details {
+        align-items: center; /* Center text on mobile when stacked */
+        text-align: center;
+    }
+
+    .product__addToCartButton {
+        width: 100%; /* Full width button on mobile */
+    }
+
+    .product__otherColorsLink {
+        align-self: center; /* Center the link on mobile */
+    }
+
+    .product__price-section {
+        justify-content: center; /* Center price details on mobile */
+    }
+}

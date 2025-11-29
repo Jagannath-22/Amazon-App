@@ -1,0 +1,172 @@
+/* Base container for the welcome section */
+.welcome-container {
+  position: relative;
+  height: 40rem; /* CHANGED: Fixed height using rem units for more constant size on zoom */
+  /* You can experiment with this value (e.g., 35rem, 45rem) */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  cursor: default;
+}
+
+/* Background image styling */
+.welcome-background {
+  width: 100%;
+  height: 100%; /* This will now be 100% of the new 40rem height */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /* transition is handled by framer-motion in JS */
+}
+
+/* Overlay for text content */
+.welcome-overlay {
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+/* Main welcome text (e.g., "Welcome to Next-Level Luxury") */
+.welcome-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  margin-bottom: 15px;
+}
+
+/* Subtitle text (e.g., "Where elegance meets experience") */
+.welcome-sub {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+  font-weight: 400;
+}
+
+/* Watery hover effect (like Patreon) */
+.welcome-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1), transparent 40%);
+  opacity: 0.3;
+  transform: scale(1);
+  animation: water-pulse 3s infinite ease-in-out;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Enhance the water effect on hover */
+.welcome-container:hover::after {
+  opacity: 0.7;
+  transform: scale(1.05);
+  animation-play-state: running;
+}
+
+/* Keyframes for the continuous background water pulse */
+@keyframes water-pulse {
+  0%   { transform: scale(1); opacity: 0.3; }
+  50%  { transform: scale(1.05); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+
+/* Navigation Arrows */
+.welcome-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 15px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+
+.welcome-nav-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.welcome-container:hover .welcome-nav-arrow {
+  opacity: 1;
+}
+
+.welcome-nav-arrow--left {
+  left: 20px;
+}
+
+.welcome-nav-arrow--right {
+  right: 20px;
+}
+
+/* Responsive adjustments for height and text */
+@media (max-width: 1024px) {
+  .welcome-container {
+    height: 35rem; /* Slightly shorter on medium screens */
+  }
+  .welcome-text {
+    font-size: 3rem;
+  }
+  .welcome-sub {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-container {
+    height: 30rem; /* Shorter on tablets */
+  }
+  .welcome-text {
+    font-size: 2.5rem;
+  }
+  .welcome-sub {
+    font-size: 1.2rem;
+  }
+  .welcome-nav-arrow {
+    padding: 10px 8px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-container {
+    height: 25rem; /* Even shorter on mobile */
+  }
+  .welcome-text {
+    font-size: 2rem;
+  }
+
+  .welcome-sub {
+    font-size: 1rem;
+  }
+
+  .welcome-nav-arrow {
+    padding: 8px 6px;
+    font-size: 1.2rem;
+  }
+  .welcome-nav-arrow--left {
+    left: 10px;
+  }
+  .welcome-nav-arrow--right {
+    right: 10px;
+  }
+}

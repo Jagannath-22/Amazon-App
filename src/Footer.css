@@ -1,0 +1,271 @@
+/* Base Footer Container */
+.footer {
+  background-color: #232f3e; /* Dark blue/charcoal background */
+  color: #fff; /* White text color */
+  font-family: 'Amazon Ember', Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* Back to Top Section */
+.footer__backToTop {
+  background-color: #37475a; /* Slightly lighter blue for back to top */
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.footer__backToTop:hover {
+  background-color: #485769; /* Darker on hover */
+}
+
+.footer__backToTop p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Main Footer Links Section (Columns) */
+.footer__main {
+  padding: 40px 20px;
+  border-bottom: 1px solid #3a4553; /* Separator line */
+}
+
+.footer__columns {
+  display: flex;
+  justify-content: center; /* Center columns */
+  gap: 30px; /* Space between columns */
+  max-width: 1000px; /* Max width for content alignment */
+  margin: 0 auto; /* Center the columns block */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.footer__column {
+  flex: 1; /* Distribute space evenly */
+  min-width: 180px; /* Minimum width before wrapping */
+  margin-bottom: 20px; /* Space below columns when wrapped */
+}
+
+.footer__column h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  white-space: nowrap; /* Prevent column titles from wrapping */
+}
+
+.footer__column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__column li {
+  margin-bottom: 7px;
+}
+
+.footer__link {
+  color: #ddd; /* Lighter white for links */
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.footer__link:hover {
+  color: #fff; /* White on hover */
+  text-decoration: underline;
+}
+
+/* Bottom Navigation (Logo, Language, Country) */
+.footer__bottomNav {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column; /* Stack items vertically on smaller screens */
+  align-items: center;
+  gap: 20px;
+}
+
+.footer__logoLink {
+  display: inline-block; /* Allows margin to apply */
+}
+
+.footer__logo {
+  width: 80px; /* Adjust logo size */
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Makes SVG white if it's black */
+}
+
+.footer__selectors {
+  display: flex;
+  gap: 15px;
+}
+
+.footer__selectorButton {
+  background-color: transparent;
+  border: 1px solid #888; /* Gray border */
+  border-radius: 3px;
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer__selectorButton:hover {
+  background-color: #3a4553;
+  border-color: #aaa;
+}
+
+.footer__selectorButton .material-icons {
+  font-size: 18px;
+}
+
+.footer__flag {
+  width: 20px;
+  height: auto;
+}
+
+/* Other Amazon Services Section */
+.footer__services {
+  background-color: #131a22; /* Even darker background for this section */
+  padding: 30px 20px;
+  border-top: 1px solid #3a4553; /* Separator line */
+  border-bottom: 1px solid #3a4553; /* Separator line */
+}
+
+.footer__servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer__serviceLink {
+  display: flex;
+  flex-direction: column;
+  color: #ddd;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.footer__serviceLink:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer__serviceLink strong {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+/* Copyright and Legal Links Section */
+.footer__legal {
+  background-color: #131a22; /* Same as services section */
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  color: #aaa; /* Lighter gray for copyright text */
+}
+
+.footer__legalLinks {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap; /* Allow links to wrap */
+}
+
+.footer__legalLink {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.footer__legalLink:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer__main {
+    padding: 30px 15px;
+  }
+  .footer__columns {
+    flex-direction: column; /* Stack columns vertically */
+    align-items: center;
+    gap: 20px;
+  }
+  .footer__column {
+    min-width: unset; /* Remove min-width */
+    width: 100%; /* Take full width */
+    text-align: center;
+  }
+  .footer__column ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .footer__column li {
+    margin-bottom: 0;
+  }
+  .footer__bottomNav {
+    padding: 20px 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .footer__selectors {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__services {
+    padding: 20px 15px;
+  }
+  .footer__servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust grid for smaller screens */
+    gap: 15px;
+  }
+  .footer__legal {
+    padding: 15px;
+  }
+  .footer__legalLinks {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__backToTop p {
+    font-size: 13px;
+  }
+  .footer__column h3 {
+    font-size: 15px;
+  }
+  .footer__link {
+    font-size: 12px;
+  }
+  .footer__selectorButton {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  .footer__selectorButton .material-icons {
+    font-size: 16px;
+  }
+  .footer__servicesGrid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+  .footer__serviceLink {
+    text-align: center;
+  }
+  .footer__legal {
+    font-size: 10px;
+  }
+  .footer__legalLinks {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

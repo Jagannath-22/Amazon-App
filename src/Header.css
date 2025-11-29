@@ -1,0 +1,147 @@
+.header {
+    height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #131921;
+  /* padding: 0 20px; */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+} 
+
+.header__logo {
+    width: 100px;
+    object-fit: contain;
+    margin:  0 20px;
+    margin-top: 18px;
+
+}
+
+.header__search{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 24px;
+    /* border: 2px; */
+    
+}
+
+.header__searchInput{
+    height: 12px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    
+    /* border-color: #f0c14b; */
+
+}
+
+.header__searchIcon{
+    padding: 5px;
+    height: 22px;
+    background-color: #cd9042;
+    color: #000000;
+    border-radius: 3px;
+
+}
+.header__optionLineOne{
+    font-size: 10px;
+    /* font-weight: 800; */
+
+}
+.header__optionLineTwo{
+    font-size: 13px;
+    font-weight: 800;
+
+}
+.header__optionBasket{
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.header__basketCount{
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.header__nav{
+    display: flex;
+    justify-content: space-evenly;
+    
+
+}
+.header__option{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+
+
+}
+.header__option:hover {
+  text-decoration: underline;
+}
+
+
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.header__search {
+  position: relative;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+/* Ensure this is in Header.css or your global styles */
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: style for individual result items */
+.search-dropdown div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-dropdown div:hover {
+  background-color: #f5f5f5;
+}
+
+.search-dropdown img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.search-dropdown p {
+  margin: 0;
+}

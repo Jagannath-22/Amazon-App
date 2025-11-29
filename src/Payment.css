@@ -1,0 +1,408 @@
+/* Base page style */
+.payment {
+  background: #f3f3f3;
+  min-height: 100vh;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #111;
+  line-height:1.8 ;
+}
+
+/* Card-like container */
+.payment__container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+/* Section headings and borders */
+.payment__heading,
+.payment__title h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+
+.payment__section + .payment__section {
+  margin-top: 30px;
+}
+
+/* Main content area for two columns */
+.payment__mainContent {
+  display: flex;
+  gap: 30px; /* Space between left and right columns */
+  margin-top: 20px; /* Space below the main heading */
+}
+
+.payment__leftColumn {
+  flex: 3; /* Takes up more space */
+}
+
+.payment__rightColumn {
+  flex: 1; /* Takes up less space */
+}
+
+/* Layout of each section within the left column */
+.payment__section {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 20px; /* Add padding at the bottom of each section */
+  border-bottom: 1px solid #e7e7e7; /* Separator line */
+}
+
+.payment__section:last-of-type {
+  border-bottom: none; /* No border for the last section */
+}
+
+.payment__title {
+  flex: 0 0 25%;
+  padding-right: 20px;
+}
+
+.payment__items,
+.payment__details {
+  flex: 1;
+}
+
+/* Address details styling */
+.payment__address p {
+  margin: 4px 0;
+}
+
+/* Item review list */
+.payment__items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stripe form area */
+.payment__details form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Payment button styling (for "Use this payment method" in the options) */
+.payment__button {
+  max-width: 280px;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 20px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 20px;
+  align-self: flex-start; /* Align button to the start in a flex column */
+}
+.payment__button:hover {
+  background-color: #ddb347;
+}
+
+/* Stripe CardElement styling */
+.StripeElement {
+  padding: 12px;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Styles for payment options within the payment method section */
+.payment__options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment__option {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  background-color: #fcfcfc;
+}
+
+.payment__option label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 5px;
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.payment__option input[type="radio"] {
+  margin-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0; /* Prevent radio button from shrinking */
+}
+
+.payment__option input[type="radio"]:checked {
+  background-color: #f0c14b;
+  border-color: #f0c14b;
+}
+
+.payment__option input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.payment__option p {
+  margin: 0;
+  padding-left: 26px;
+  color: #555;
+  font-size: 13px;
+}
+
+.payment__option .unavailable {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.payment__option .info {
+  color: #555;
+}
+
+.payment__option .info a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.payment__option .info a:hover {
+  text-decoration: underline;
+}
+
+.card-icons {
+  display: flex;
+  gap: 10px;
+  padding-left: 26px;
+  margin-top: 5px;
+}
+
+.card-icons img {
+  height: 20px;
+  width: auto;
+}
+
+.payment__option select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  width: 100%;
+  max-width: 250px;
+}
+
+/* Right Column: Order Summary Box */
+.payment__orderSummary {
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Makes the box stick as you scroll */
+  top: 20px; /* Distance from the top of the viewport */
+}
+
+.payment__orderSummaryDetails {
+  padding-top: 15px;
+  border-top: 1px solid #e7e7e7;
+  margin-top: 15px;
+}
+
+.payment__orderSummary h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.payment__summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.payment__summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e7e7e7;
+  font-size: 16px;
+  font-weight: 700;
+  color: #c45500; /* Amazon's total color */
+}
+
+.payment__orderButton {
+  width: 100%;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 4px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-bottom: 10px; /* Space between buttons and details */
+}
+
+.payment__orderButton:hover {
+  background-color: #ddb347;
+}
+
+.payment__orderButton--top {
+  margin-bottom: 15px; /* Space below the top button */
+}
+
+.payment__orderButton--bottom {
+  margin-top: 15px; /* Space above the bottom button */
+}
+
+.payment__terms {
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.payment__terms a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.payment__terms a:hover {
+  text-decoration: underline;
+}
+
+/* Last Part Box (Footer-like section) */
+.payment__footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+.payment__footer p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.payment__footer a {
+  color: #007185;
+  text-decoration: none;
+}
+
+.payment__footer a:hover {
+  text-decoration: underline;
+}
+
+.payment__backToTop {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 15px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #007185;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.payment__backToTop:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .payment__mainContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .payment__section {
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+  }
+
+  .payment__title {
+    flex: none;
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .payment__container {
+    padding: 15px;
+  }
+
+  .payment__button {
+    max-width: 100%;
+  }
+
+  .payment__orderSummary {
+    position: static; /* Remove sticky behavior on small screens */
+    top: auto;
+  }
+}
+
+
+.payment__priceContainer button {
+  background-color: #f0c14b;
+  border: 1px solid;
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.payment__priceContainer button:hover {
+  background-color: #ddb347;
+}
+
+.payment__priceContainer button:disabled {
+  background-color: #e7e9ec;
+  color: #888;
+  border-color: #c0c0c0;
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -1,0 +1,76 @@
+/* src/LuxuryCard.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
+
+.luxury-card {
+  width: 250px;
+  height: 370px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 16px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.luxury-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+}
+
+.luxury-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.3s ease;
+}
+
+.luxury-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+  color: #1f2937;
+}
+
+.luxury-card .price {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.luxury-card .price span {
+  color: #065f46;
+  font-weight: bold;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-top: 8px;
+  color: #fbbf24;
+  justify-content: center;
+}
+
+.luxury-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.luxury-card:hover .luxury-card-glow {
+  opacity: 0.06;
+}
+
